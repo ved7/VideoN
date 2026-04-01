@@ -3,6 +3,7 @@ from __future__ import annotations
 from functools import lru_cache
 from typing import Literal
 
+from pydantic import model_validator
 from pydantic_settings import BaseSettings, SettingsConfigDict
 
 
@@ -51,6 +52,14 @@ class Settings(BaseSettings):
         env_file_encoding="utf-8",
         case_sensitive=False,
     )
+
+    @model_validator(mode="after")
+    def normalize_database_url(self) -> "Settings":
+        if self.database_url.startswith("postgres://"):
+            self.database_url = self.database_url.replace("postgres://", "postgresql+psycopg://", 1)
+        elif self.database_url.startswith("postgresql://") and "+psycopg" not in self.database_url:
+            self.database_url = self.database_url.replace("postgresql://", "postgresql+psycopg://", 1)
+        return self
 
     @property
     def cors_origin_list(self) -> list[str]:
