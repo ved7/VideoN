@@ -1,0 +1,49 @@
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+@layer base {
+  :root {
+    color-scheme: light;
+    font-family:
+      Inter,
+      ui-sans-serif,
+      system-ui,
+      -apple-system,
+      BlinkMacSystemFont,
+      "SF Pro Display",
+      "SF Pro Text",
+      sans-serif;
+  }
+
+  * {
+    @apply box-border;
+  }
+
+  html {
+    @apply scroll-smooth;
+  }
+
+  body {
+    @apply m-0 min-w-[320px] bg-[#F5F5F7] font-sans text-[#1D1D1F] antialiased;
+  }
+
+  a {
+    @apply text-inherit no-underline;
+  }
+
+  button,
+  input,
+  select,
+  textarea {
+    font: inherit;
+  }
+
+  textarea {
+    resize: vertical;
+  }
+
+  ::selection {
+    background: rgba(0, 122, 255, 0.16);
+  }
+}
