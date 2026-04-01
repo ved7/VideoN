@@ -7,7 +7,7 @@ from pydantic_settings import BaseSettings, SettingsConfigDict
 
 
 class Settings(BaseSettings):
-    app_name: str = "ThirdAI Video Annotation Platform"
+    app_name: str = "VideoN"
     environment: Literal["development", "test", "staging", "production"] = "development"
     api_prefix: str = "/api"
     log_level: str = "INFO"
