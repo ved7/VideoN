@@ -16,6 +16,9 @@ COPY requirements.txt .
 RUN pip install --no-cache-dir -r requirements.txt
 
 COPY --chown=app:app app ./app
+COPY --chown=app:app start-render.sh ./start-render.sh
+
+RUN chmod +x ./start-render.sh
 
 USER app
 
