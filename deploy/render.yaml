@@ -1,6 +1,7 @@
 services:
   - type: web
     name: videon-api
+    plan: free
     runtime: docker
     rootDir: backend
     dockerfilePath: ./Dockerfile
